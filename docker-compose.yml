@@ -201,6 +201,11 @@ services:
         - DOCKER_TLS_CERTDIR=/certs
         - DOCKER_CERT_PATH=/certs/client
         - CHOKIDAR_USEPOLLING=true
+        - DB_HOST=mariadb
+        - DB_PORT=${MARIADB_PORT}
+        - DB_DATABASE=${MARIADB_DATABASE}
+        - DB_USERNAME=${MARIADB_USER}
+        - DB_PASSWORD=${MARIADB_PASSWORD}
       networks:
         - frontend
         - backend
