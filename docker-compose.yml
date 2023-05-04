@@ -317,6 +317,13 @@ services:
         - DOCKER_TLS_CERTDIR=/certs
         - DOCKER_CERT_PATH=/certs/client
         - FAKETIME=${PHP_FPM_FAKETIME}
+        - DB_HOST=mariadb
+        - DB_PORT=${MARIADB_PORT}
+        - DB_DATABASE=${MARIADB_DATABASE}
+        - DB_USERNAME=${MARIADB_USER}
+        - DB_PASSWORD=${MARIADB_PASSWORD}
+        - SECRET_TRANSFER_ENCRYPTION_PASSPHRASE=${APP_SECRET_TRANSFER_ENCRYPTION_PASSPHRASE}
+        - SECRET_TRANSFER_ENCRYPTION_METHOD=${APP_SECRET_TRANSFER_ENCRYPTION_METHOD}
       depends_on:
         - workspace
       networks:
@@ -2109,7 +2116,7 @@ services:
         - frontend
         - backend
       restart: always
-  
+
   ### keycloak ##################################################
     keycloak:
       image: bitnami/keycloak:${KEYCLOAK_VERSION}
